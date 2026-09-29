@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dorothy Midida — Financial Economics Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFEAE0; --paper-2:#E6E0D2; --ink:#16233B; --ink-2:#3A4A66;
+  --accent:#2F6E4F; --accent-soft:#DDE7DE; --brass:#9C7A32; --line:#CFC7B2;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12192A; --paper-2:#182036; --ink:#EDE9DD; --ink-2:#B9C2D6;
+    --accent:#6FC79A; --accent-soft:#1D2E28; --brass:#D8B45E; --line:#2C3550;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12192A; --paper-2:#182036; --ink:#EDE9DD; --ink-2:#B9C2D6;
+  --accent:#6FC79A; --accent-soft:#1D2E28; --brass:#D8B45E; --line:#2C3550;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);line-height:1.55;}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;margin:0;line-height:1.15;}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+a{color:inherit;}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+.rule{border:none;border-top:1px solid var(--line);margin:0;}
+
+header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:840px;margin:0 auto;}
+.nav-name{font-family:"Source Serif 4",serif;font-weight:600;font-size:1.05rem;text-decoration:none;}
+.nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0;}
+.nav-links a{text-decoration:none;font-size:0.92rem;color:var(--ink-2);}
+.nav-links a:hover{color:var(--accent);}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:4px;color:var(--ink);
+  font-size:1rem;padding:6px 10px;cursor:pointer;}
+
+.hero{padding:64px 0 40px;}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--accent);margin-bottom:14px;}
+h1.name{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-0.01em;}
+.role{font-size:1.15rem;color:var(--ink-2);margin-top:10px;max-width:560px;}
+.lede{margin-top:22px;max-width:600px;font-size:1.02rem;}
+.hero-links{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
+.pill{display:inline-block;border:1px solid var(--ink);border-radius:2px;padding:8px 16px;
+  font-family:"IBM Plex Mono",monospace;font-size:0.82rem;text-decoration:none;color:var(--ink);}
+.pill.solid{background:var(--ink);color:var(--paper);}
+.pill:hover{border-color:var(--accent);color:var(--accent);}
+.pill.solid:hover{background:var(--accent);color:var(--paper);border-color:var(--accent);}
+
+.ledger{display:flex;gap:0;margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  flex-wrap:wrap;}
+.ledger div{flex:1 1 140px;padding:16px 0;border-right:1px solid var(--line);}
+.ledger div:last-child{border-right:none;}
+.ledger .num{font-family:"Source Serif 4",serif;font-size:1.6rem;}
+.ledger .lab{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;color:var(--ink-2);margin-top:2px;}
+
+section{padding:56px 0;}
+.section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;}
+.section-num{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:0.85rem;}
+section h2{font-size:1.5rem;}
+.intro-text{max-width:640px;}
+.intro-text p{margin:0 0 16px;}
+
+.project{border-top:1px solid var(--line);padding:32px 0;}
+.project:last-child{border-bottom:1px solid var(--line);}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;}
+.p-title{font-size:1.25rem;}
+.p-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:0.7rem;padding:3px 9px;border:1px solid var(--line);
+  border-radius:2px;color:var(--ink-2);}
+.tag.level{color:var(--accent);border-color:var(--accent);}
+.p-desc{margin-top:14px;max-width:600px;}
+.p-finding{margin-top:14px;padding-left:16px;border-left:2px solid var(--brass);font-size:0.94rem;color:var(--ink-2);
+  max-width:560px;}
+.p-stack{margin-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.stack-list{font-family:"IBM Plex Mono",monospace;font-size:0.78rem;color:var(--ink-2);}
+.repo-link{font-family:"IBM Plex Mono",monospace;font-size:0.82rem;text-decoration:none;color:var(--accent);
+  border-bottom:1px solid var(--accent);}
+.chart{margin-top:18px;height:64px;display:flex;align-items:flex-end;gap:4px;}
+.chart span{flex:1;background:var(--accent-soft);border-top:2px solid var(--accent);}
+
+.timeline{border-top:1px solid var(--line);}
+.role-row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);}
+.role-row .when{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--accent);}
+.role-row h3{font-size:1.05rem;}
+.role-row .org{color:var(--ink-2);font-size:0.92rem;margin-top:2px;}
+.role-row p{margin:10px 0 0;font-size:0.94rem;max-width:520px;}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px;}
+.skill-group h3{font-size:0.95rem;font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--accent);
+  margin-bottom:10px;}
+.skill-group ul{margin:0;padding:0;list-style:none;}
+.skill-group li{padding:6px 0;border-bottom:1px solid var(--line);font-size:0.92rem;}
+
+.edu-item{padding:18px 0;border-top:1px solid var(--line);}
+.edu-item:last-child{border-bottom:1px solid var(--line);}
+.edu-item .when{font-family:"IBM Plex Mono",monospace;font-size:0.78rem;color:var(--accent);}
+.edu-item h3{font-size:1.02rem;margin-top:4px;}
+.edu-item p{margin:6px 0 0;color:var(--ink-2);font-size:0.9rem;}
+
+footer{background:var(--ink);color:var(--paper);padding:56px 0 calc(56px + env(safe-area-inset-bottom,0px));margin-top:40px;}
+footer h2{font-size:1.6rem;color:var(--paper);}
+footer p{color:#B9C2D6;max-width:480px;margin-top:14px;}
+.foot-links{margin-top:26px;display:flex;flex-wrap:wrap;gap:24px;}
+.foot-links a{text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:0.88rem;color:var(--paper);
+  border-bottom:1px solid var(--brass);padding-bottom:2px;}
+.foot-note{margin-top:40px;font-size:0.75rem;color:#7C8AA6;font-family:"IBM Plex Mono",monospace;}
+
+@media (max-width:640px){
+  .nav-links{display:none;}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--paper);
+    flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--line);gap:14px;}
+  .menu-btn{display:block;}
+  .role-row{grid-template-columns:1fr;gap:6px;}
+  .ledger div{flex:1 1 45%;}
+}
+
+.detail{border-top:1px solid var(--line);padding:36px 0;max-width:680px;}
+.detail:last-child{border-bottom:1px solid var(--line);}
+.detail-num{color:var(--accent);font-size:0.8rem;margin-bottom:8px;}
+.detail h3{font-size:1.3rem;margin-bottom:6px;}
+.detail h4{font-family:"IBM Plex Mono",monospace;font-size:0.78rem;text-transform:none;color:var(--brass);
+  margin:20px 0 6px;}
+.detail p{margin:0 0 4px;font-size:0.95rem;}
+.detail code{font-family:"IBM Plex Mono",monospace;background:var(--paper-2);padding:1px 5px;border-radius:2px;
+  font-size:0.85em;}
+.dl-btn{margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:0.82rem;background:var(--ink);
+  color:var(--paper);border:1px solid var(--ink);border-radius:2px;padding:10px 18px;cursor:pointer;}
+.dl-btn:hover{background:var(--accent);border-color:var(--accent);}
+.dl-btn[disabled]{opacity:0.55;cursor:default;}
+.dl-status{font-family:"IBM Plex Mono",monospace;font-size:0.78rem;color:var(--ink-2);margin-left:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a class="nav-name" href="#top">Dorothy Midida</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero" style="padding-top:56px;">
+      <div class="eyebrow mono">Nairobi, Kenya</div>
+      <h1 class="name">Dorothy Midida</h1>
+      <p class="role">Regulatory compliance at the Capital Markets Authority, budget execution at Migori County,
+        and four projects built to bridge that experience with financial economics.</p>
+      <p class="lede">I work where public finance meets capital markets. This page holds the applied projects
+        I built in Excel, SQL and Python to demonstrate that connection, ahead of graduate study in
+        financial economics.</p>
+      <div class="hero-links">
+        <a class="pill solid" href="#work">View the projects</a>
+        <a class="pill" href="https://linkedin.com/in/dorothymidida" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <div class="ledger mono">
+      <div><div class="num">4</div><div class="lab">PROJECTS</div></div>
+      <div><div class="num">3</div><div class="lab">TOOLS — EXCEL / SQL / PYTHON</div></div>
+      <div><div class="num">2</div><div class="lab">YEARS PUBLIC &amp; MARKET FINANCE</div></div>
+      <div><div class="num">KE</div><div class="lab">FOCUS — KENYA</div></div>
+    </div>
+
+    <section id="about">
+      <div class="section-head"><span class="section-num mono">00</span><h2>Background</h2></div>
+      <div class="intro-text">
+        <p>At the Capital Markets Authority of Kenya, I review licensee compliance files, assess internal
+          controls and corporate governance, and analyse financial and operational reports to spot
+          anomalies and support risk assessment. Before that, at Migori County Government, I consolidated
+          departmental budget requests and tracked budget execution, investigating variances between
+          approved allocations and actual spending.</p>
+        <p>Those two roles taught me the same lesson from different sides: markets and public budgets both
+          depend on credible institutions, good data, and sound incentives. The projects below are how I've
+          started building the quantitative half of that picture, using Kenyan public finance and capital
+          markets questions as the material.</p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head"><span class="section-num mono">01</span><h2>Projects</h2></div>
+
+      <div class="project">
+        <div class="p-head">
+          <div>
+            <div class="p-title">County Budget Execution &amp; Variance Analysis</div>
+            <div class="p-tags">
+              <span class="tag level">Beginner</span>
+              <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Excel</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart" aria-hidden="true">
+          <span style="height:98%"></span><span style="height:85%"></span><span style="height:55%"></span>
+          <span style="height:96%"></span><span style="height:88%"></span><span style="height:48%"></span>
+          <span style="height:99%"></span><span style="height:82%"></span><span style="height:61%"></span>
+        </div>
+        <p class="p-desc">Measures how much of a county's approved budget is actually spent, by department
+          and by economic category, and tests it against two fiscal rules from the PFM Act: a 30%
+          development-spending floor and a 35% wage-bill ceiling.</p>
+        <p class="p-finding">Finding: development spending absorbed roughly half of what was approved,
+          while personnel lines were almost fully spent — the pattern the Controller of Budget regularly
+          flags in county reviews.</p>
+        <div class="p-stack">
+          <span class="stack-list">SQLite window &amp; aggregate queries → pandas → Excel report with live
+            formulas and conditional formatting</span>
+          <a class="repo-link" href="#detail-1">Read the write-up &amp; get the code ↓</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-head">
+          <div>
+            <div class="p-title">Treasury Bond Pricing &amp; the Yield Curve</div>
+            <div class="p-tags">
+              <span class="tag level">Beginner</span>
+              <span class="tag">Python</span><span class="tag">Excel</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart" aria-hidden="true">
+          <span style="height:40%"></span><span style="height:55%"></span><span style="height:66%"></span>
+          <span style="height:75%"></span><span style="height:84%"></span><span style="height:90%"></span>
+          <span style="height:95%"></span><span style="height:98%"></span><span style="height:100%"></span>
+        </div>
+        <p class="p-desc">Prices semi-annual coupon bonds along an illustrative Kenyan yield curve, derives
+          Macaulay duration, modified duration and convexity, and checks how well the duration-convexity
+          approximation predicts a 100 basis point shock against full repricing.</p>
+        <p class="p-finding">Finding: a 100bp rise cuts a 2-year bond's price by about 1.7%, versus about
+          5.9% for a 25-year bond — the same rate move, very different exposure.</p>
+        <div class="p-stack">
+          <span class="stack-list">NumPy cash-flow pricing → Excel bond calculator with formula-linked
+            duration and convexity</span>
+          <a class="repo-link" href="#detail-2">Read the write-up &amp; get the code ↓</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-head">
+          <div>
+            <div class="p-title">NSE Equity Risk, CAPM &amp; Market Surveillance</div>
+            <div class="p-tags">
+              <span class="tag level">Beginner</span>
+              <span class="tag">SQL</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart" aria-hidden="true">
+          <span style="height:30%"></span><span style="height:42%"></span><span style="height:35%"></span>
+          <span style="height:50%"></span><span style="height:96%"></span><span style="height:40%"></span>
+          <span style="height:44%"></span><span style="height:38%"></span><span style="height:33%"></span>
+        </div>
+        <p class="p-desc">Computes daily returns and CAPM beta directly in SQL using window functions, then
+          plots the Security Market Line in Python and runs a market-surveillance screen that flags a price
+          move over three standard deviations alongside volume above three times its trailing average.</p>
+        <p class="p-finding">Finding: the screen correctly isolated a single planted anomaly — an 11% move
+          on roughly six times normal volume — out of two years of daily trading, without flagging routine days.</p>
+        <div class="p-stack">
+          <span class="stack-list">SQL LAG() &amp; rolling windows → beta and CAPM alpha → Security Market
+            Line and surveillance flags</span>
+          <a class="repo-link" href="#detail-3">Read the write-up &amp; get the code ↓</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="p-head">
+          <div>
+            <div class="p-title">Public Debt Sustainability: a Monte Carlo Simulation</div>
+            <div class="p-tags">
+              <span class="tag level" style="border-color:var(--brass);color:var(--brass)">Intermediate</span>
+              <span class="tag">Python</span><span class="tag">Excel</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart" aria-hidden="true">
+          <span style="height:55%"></span><span style="height:58%"></span><span style="height:63%"></span>
+          <span style="height:68%"></span><span style="height:72%"></span><span style="height:80%"></span>
+          <span style="height:88%"></span><span style="height:93%"></span><span style="height:100%"></span>
+        </div>
+        <p class="p-desc">Models Kenya's debt-to-GDP path with the standard debt-dynamics identity,
+          d[t] = d[t-1](1+i)/(1+g) − pb, including the exchange-rate valuation effect on foreign-currency
+          debt. Ten thousand correlated simulations compare a baseline against fiscal consolidation, a
+          currency shock, and higher domestic rates.</p>
+        <p class="p-finding">Finding: under the illustrative baseline, the debt-stabilising primary balance
+          exceeds the assumed one, so debt drifts upward — a sustained shilling depreciation is the most
+          damaging of the four scenarios tested.</p>
+        <div class="p-stack">
+          <span class="stack-list">Cholesky-correlated shocks → NumPy simulation → fan chart and
+            scenario probabilities</span>
+          <a class="repo-link" href="#detail-4">Read the write-up &amp; get the code ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="section-head"><span class="section-num mono">01b</span><h2>Project write-ups &amp; code</h2></div>
+      <p class="intro-text" style="max-width:640px;margin-bottom:8px;">Each write-up below covers the economic
+        principle behind the project, what the study does, what it finds, and how it connects to Kenyan and
+        wider African markets. The code for each project downloads as a standalone zip — Python scripts, SQL
+        queries and a README, ready to open in any editor.</p>
+
+      <div class="detail" id="detail-1">
+        <div class="detail-num mono">01 / 04</div>
+        <h3>County Budget Execution &amp; Variance Analysis</h3>
+        <h4>Economic principle</h4>
+        <p>Public finance separates an <em>approved</em> budget from an <em>executed</em> one. The gap between
+          them, budget absorption, matters because unspent capital budgets represent public investment that
+          never happened: roads not built, clinics not equipped. Kenya's Public Finance Management Act sets
+          two guardrails on that gap — county governments must direct at least 30% of their budget to
+          development spending, and cap the wage bill at 35% of revenue — precisely because recurrent costs
+          (salaries) tend to crowd out capital spending when budgets come under strain.</p>
+        <h4>The study</h4>
+        <p>The project builds a county budget (approved vs. actual, by department and by economic category —
+          Personnel, Operations, Development), loads it into SQLite, and answers four questions in SQL:
+          absorption by department, absorption by category, whether the two PFM Act rules pass or fail, and
+          which line items under-spent by more than 25%. Python then produces a bar chart of absorption by
+          department, and an Excel report where variance and absorption are live formulas with conditional
+          formatting — the same tool a budget officer would actually use.</p>
+        <h4>Conclusion</h4>
+        <p>On the illustrative data, personnel lines absorbed almost their full allocation (about 98%) while
+          development absorbed only about half — and every line flagged as under-spent by more than 25% was a
+          development line. That is the standard signature of weak execution capacity: money is committed on
+          paper but stalls at procurement, disbursement or contractor delays.</p>
+        <h4>Kenya &amp; African markets context</h4>
+        <p>This mirrors what Kenya's Controller of Budget reports on actual counties year after year —
+          development absorption in the 40–60% range is common, well short of the legal floor. The same
+          pattern shows up across fiscally decentralized African states — Nigeria's states and South Africa's
+          municipalities face comparable capital-absorption gaps — which is why budget execution monitoring,
+          not just budget approval, is treated as a core public financial management discipline by the World
+          Bank and IMF's PEFA framework.</p>
+        <button class="dl-btn" data-zip="Z1" data-filename="01-county-budget-execution.zip">Download project code (.zip)</button>
+      </div>
+
+      <div class="detail" id="detail-2">
+        <div class="detail-num mono">02 / 04</div>
+        <h3>Treasury Bond Pricing &amp; the Yield Curve</h3>
+        <h4>Economic principle</h4>
+        <p>A bond's price is the present value of its future coupons and principal, discounted at the market
+          yield. As yields rise, prices fall — but not all bonds fall by the same amount. <strong>Duration</strong>
+          measures that sensitivity, and the <strong>yield curve</strong> — yields plotted against maturity —
+          reflects what markets expect about future growth, inflation and risk. An upward-sloping curve is the
+          normal state, compensating investors for locking up money longer; a flat or inverted curve is a
+          signal markets watch closely.</p>
+        <h4>The study</h4>
+        <p>The project prices a semi-annual coupon bond by discounting every cash flow individually, then
+          derives Macaulay duration, modified duration, and convexity from first principles in NumPy — no
+          finance library shortcuts. It shocks yields by ±100 basis points, compares the full repriced value
+          against the duration-plus-convexity approximation, and builds an Excel bond calculator where every
+          result is a formula, not a static number, so changing the coupon or yield recalculates the whole
+          workbook live.</p>
+        <h4>Conclusion</h4>
+        <p>A 100bp rise in yields cuts a 2-year bond's price by about 1.7%, but a 25-year bond's price by about
+          5.9% — the same rate move, a very different loss, purely a function of maturity. The
+          duration-convexity approximation tracks the true repriced value to within a few hundredths of a
+          shilling, confirming why traders use it as a fast risk proxy instead of repricing every bond from
+          scratch.</p>
+        <h4>Kenya &amp; African markets context</h4>
+        <p>The Central Bank of Kenya's Treasury bond auctions are the benchmark for pricing across the entire
+          Kenyan capital market, from corporate bonds to bank lending rates. A deepening local-currency bond
+          market is also a policy goal shared across African markets — Nigeria, Ghana and Kenya have all
+          pushed to grow domestic debt markets specifically to reduce reliance on foreign-currency borrowing
+          and the exchange-rate risk that comes with it (the same risk modelled directly in Project 4).</p>
+        <button class="dl-btn" data-zip="Z2" data-filename="02-treasury-bond-yield-curve.zip">Download project code (.zip)</button>
+      </div>
+
+      <div class="detail" id="detail-3">
+        <div class="detail-num mono">03 / 04</div>
+        <h3>NSE Equity Risk, CAPM &amp; Market Surveillance</h3>
+        <h4>Economic principle</h4>
+        <p>The Capital Asset Pricing Model says a stock's required return equals the risk-free rate plus its
+          <strong>beta</strong> — its sensitivity to market-wide moves — times the market risk premium. Only
+          systematic risk, the risk you can't diversify away, should be rewarded. Separately, market integrity
+          depends on regulators being able to distinguish ordinary volatility from abnormal, potentially
+          manipulative trading — the core job of a capital markets surveillance function.</p>
+        <h4>The study</h4>
+        <p>Daily returns and CAPM beta are computed entirely in SQL, using window functions (<code>LAG()</code>
+          for returns, rolling 20-day windows for the surveillance screen) rather than pulling raw prices into
+          Python and doing the math there. Python then annualises risk and return, computes each stock's Sharpe
+          ratio and CAPM alpha, and plots the Security Market Line. A surveillance rule flags any day where a
+          stock's price move exceeds three standard deviations <em>and</em> volume exceeds three times its
+          trailing average — using only past data, so the rule never has hindsight it wouldn't have had in
+          real time.</p>
+        <h4>Conclusion</h4>
+        <p>Higher-beta stocks carried more risk and, on the simulated data, more return — consistent with
+          CAPM's basic prediction. Out of two years of daily trading across five stocks, the surveillance
+          screen caught exactly one event: a single planted anomaly, an 11% move on roughly six times normal
+          volume. It did not fire on any ordinary trading day, which is the behaviour a regulator wants from a
+          screen — high precision, not noise.</p>
+        <h4>Kenya &amp; African markets context</h4>
+        <p>The Nairobi Securities Exchange, like most African exchanges outside the JSE in South Africa, trades
+          with thinner liquidity than developed markets, which makes abnormal-volume screens especially useful
+          — a large move on low volume can be noise, but a large move on unusually high volume is exactly what
+          a compliance officer at the CMA would want surfaced for review. A flag is a prompt to investigate,
+          never proof of wrongdoing on its own.</p>
+        <button class="dl-btn" data-zip="Z3" data-filename="03-nse-risk-and-market-surveillance.zip">Download project code (.zip)</button>
+      </div>
+
+      <div class="detail" id="detail-4">
+        <div class="detail-num mono">04 / 04</div>
+        <h3>Public Debt Sustainability: a Monte Carlo Simulation</h3>
+        <h4>Economic principle</h4>
+        <p>Debt sustainability comes down to one comparison: the interest rate a government pays on its debt
+          (<em>i</em>) versus the growth rate of its economy (<em>g</em>). When <em>i</em> exceeds <em>g</em>,
+          debt grows on its own — the "snowball" effect — and the government needs primary budget surpluses
+          just to hold the debt ratio steady. For a country like Kenya that borrows partly in foreign currency,
+          a weaker shilling directly raises the local-currency value of that debt, adding a second channel of
+          risk on top of interest rates and growth.</p>
+        <h4>The study</h4>
+        <p>The project implements the standard debt-dynamics identity, d[t] = d[t-1](1+i)/(1+g) − pb, with a
+          blended interest rate that accounts for the foreign-currency share of debt and shilling depreciation.
+          Because growth, inflation, interest rates, the exchange rate and the primary balance are uncertain
+          and correlated with each other, the model draws 10,000 correlated future paths (via a Cholesky
+          decomposition of the shock correlations) over a 10-year horizon, and compares four scenarios:
+          baseline, fiscal consolidation, a currency shock, and higher domestic interest rates.</p>
+        <h4>Conclusion</h4>
+        <p>Under the illustrative baseline assumptions, the primary balance needed to stabilise debt exceeds
+          the assumed one, so the debt ratio drifts upward over the simulation. Of the four scenarios, a
+          sustained shilling depreciation does the most damage — debt ends above today's level in nearly every
+          simulated path — while a 2.5%-of-GDP fiscal consolidation is enough to turn the trajectory around.</p>
+        <h4>Kenya &amp; African markets context</h4>
+        <p>This is the same type of analysis the IMF and World Bank run as a formal Debt Sustainability Analysis
+          for Kenya and other African economies. It's directly relevant to Kenya's own debt trajectory —
+          including its Eurobond exposure and shilling depreciation risk — and to the wider continent, where
+          Zambia's and Ghana's debt distress in recent years were driven by exactly this combination: dollar-
+          denominated debt colliding with currency depreciation and growth shortfalls.</p>
+        <button class="dl-btn" data-zip="Z4" data-filename="04-kenya-debt-sustainability-simulation.zip">Download project code (.zip)</button>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><span class="section-num mono">02</span><h2>Experience</h2></div>
+      <div class="timeline">
+        <div class="role-row">
+          <div class="when mono">JAN 2025 —<br>PRESENT</div>
+          <div>
+            <h3>Junior Officer, Regulatory Compliance</h3>
+            <div class="org">Capital Markets Authority, Nairobi</div>
+            <p>Review licensee compliance files, assess internal controls and governance, analyse financial
+              reports for anomalies, and co-author regulatory communications and investor briefings.</p>
+          </div>
+        </div>
+        <div class="role-row">
+          <div class="when mono">APR 2024 —<br>DEC 2024</div>
+          <div>
+            <h3>Junior Budget &amp; Administration Officer</h3>
+            <div class="org">Migori County Government</div>
+            <p>Consolidated departmental budget requests, monitored quarterly execution, investigated
+              variances against approved allocations, and coordinated the budget preparation cycle.</p>
+          </div>
+        </div>
+        <div class="role-row">
+          <div class="when mono">APR 2023 —<br>AUG 2023</div>
+          <div>
+            <h3>Human Resource Attaché</h3>
+            <div class="org">Sony Sugar Company</div>
+            <p>Supported HR operations, employee records and recruitment coordination.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num mono">03</span><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Data &amp; Tools</h3>
+          <ul><li>Advanced Excel</li><li>SQL</li><li>Python (pandas, NumPy)</li><li>Data visualization</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Financial &amp; Regulatory</h3>
+          <ul><li>Budgeting &amp; forecasting</li><li>Regulatory compliance</li>
+            <li>Corporate governance review</li><li>Risk assessment</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Research</h3>
+          <ul><li>Financial report analysis</li><li>Policy review</li>
+            <li>Quantitative &amp; qualitative research</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" style="padding-bottom:20px;">
+      <div class="section-head"><span class="section-num mono">04</span><h2>Education &amp; certifications</h2></div>
+      <div class="edu-item">
+        <div class="when mono">2021 – 2024</div>
+        <h3>B.Sc. Human Resource Management with IT — Maseno University</h3>
+        <p>Second Class Honours, Upper Division · GPA 3.32/4.00. Coursework included Finance Principles,
+          Managerial Accounting, Data Analysis and Business Law.</p>
+      </div>
+      <div class="edu-item">
+        <div class="when mono">KASNEB</div>
+        <h3>CPA Part I (Junior Accountant)</h3>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's connect</h2>
+    <p>Open to conversations on fiscal policy, debt markets, capital markets regulation, and financial
+      economics graduate programs.</p>
+    <div class="foot-links">
+      <a href="mailto:Mididadoro@gmail.com">Mididadoro@gmail.com</a>
+      <a href="https://linkedin.com/in/dorothymidida" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    <div class="foot-note">All project figures are built on synthetic, illustrative data shaped like
+      Kenyan public finance and market data — see each project's README for real-data sources.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click', function(){document.getElementById('navLinks').classList.remove('open');});
+});
+</script>
+
+<script>
+const ZIP_DATA = {
+  Z1: "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",
+  Z2: "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",
+  Z3: "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",
+  Z4: "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",
+};
+
+function b64ToBlob(b64, mime) {
+  const bytes = atob(b64);
+  const arr = new Uint8Array(bytes.length);
+  for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+  return new Blob([arr], { type: mime });
+}
+
+async function saveZip(base64, filename) {
+  const blob = b64ToBlob(base64, 'application/zip');
+  // Inside a Claude artifact: use the native downloads capability.
+  if (typeof claude !== 'undefined' && claude.use) {
+    try {
+      const downloads = await claude.use('downloads');
+      if (downloads) {
+        const result = await downloads.save({ filename: filename, data: blob });
+        return result.status === 'saved' ? 'saved' : 'delivered';
+      }
+    } catch (err) {
+      if (err && err.code === 'declined') return 'cancelled';
+      // fall through to the plain browser download below
+    }
+  }
+  // Anywhere else (Netlify, GitHub Pages, opened as a local file, etc.):
+  // a standard browser download via an object URL.
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  return 'saved';
+}
+
+document.querySelectorAll('.dl-btn').forEach(function(btn) {
+  btn.addEventListener('click', async function() {
+    const key = btn.getAttribute('data-zip');
+    const filename = btn.getAttribute('data-filename');
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Preparing…';
+    try {
+      const status = await saveZip(ZIP_DATA[key], filename);
+      btn.textContent = status === 'cancelled' ? 'Cancelled' : 'Saved ✓';
+    } catch (err) {
+      btn.textContent = 'Try again';
+    }
+    setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 2200);
+  });
+});
+</script>
+</body>
+</html>
